@@ -17,14 +17,21 @@ async function criaVideo(titulo, descricao, url, imagem) {
             url: url,
             imagem: imagem
         })
-    })
-    
+    })    
     const videos = await res.json()
-    console.log(videos)
+
+    return videos
+}
+
+async function buscaVideo(termoDeBusca) {
+    const res = await fetch(`http://localhost:3000/videos?q=${termoDeBusca}`)
+    const videos = res.json()
+
     return videos
 }
 
 export const conectaApi = {
     listaVideos,
-    criaVideo
+    criaVideo,
+    buscaVideo
 }
