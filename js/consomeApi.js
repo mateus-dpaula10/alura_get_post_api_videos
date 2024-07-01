@@ -18,6 +18,9 @@ async function criaVideo(titulo, descricao, url, imagem) {
             imagem: imagem
         })
     })    
+    if (!res.ok) {
+        throw new Error("Não foi possível enviar o vídeo")
+    }
     const videos = await res.json()
 
     return videos
